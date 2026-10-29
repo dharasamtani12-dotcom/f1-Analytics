@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --accent-red: #ef233c;
+    --accent-red-glow: rgba(239, 35, 60, 0.45);
+    --f1-red: #e10600;
+    --bg-carbon: #09090b;
+    --bg-slate-dark: #0b0e14;
+    --bg-card: #151921;
+    --border-steel: #262c38;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  ::selection {
+    background: #ef233c;
+    color: #ffffff;
+  }
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Custom Font Utilities */
+.font-chakra {
+  font-family: 'Chakra Petch', 'Titillium Web', sans-serif;
+}
+
+.font-manrope {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.font-mono-telemetry {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+/* Custom Keyframe Animations */
+@keyframes border-spin {
+  from {
+    --gradient-angle: 0deg;
+  }
+  to {
+    --gradient-angle: 360deg;
+  }
+}
+
+@keyframes track-car-travel {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes red-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(239, 35, 60, 0.4), inset 0 0 15px rgba(239, 35, 60, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(239, 35, 60, 0.7), inset 0 0 25px rgba(239, 35, 60, 0.4);
+  }
+}
+
+/* Shiny Conic Rotating Border Button */
+.f1-shiny-btn {
+  --gradient-angle: 0deg;
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(from var(--gradient-angle), transparent 0%, #ef233c 15%, #ef233c 30%, transparent 45%, transparent 100%) border-box;
+  border: 2px solid transparent;
+  cursor: pointer;
+  isolation: isolate;
+  animation: border-spin 2.5s linear infinite;
+}
+
+/* Marquee Ticker Setup */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-move {
+  display: inline-flex;
+  animation: ticker-slide 32s linear infinite;
+}
+
+.ticker-move:hover {
+  animation-play-state: paused;
+}
+
+/* Background Parallax Star Fields */
+.stars-1 {
+  box-shadow: 120px 300px #fff, 450px 800px #fff, 900px 200px #fff, 1200px 1500px #fff,
+    1600px 600px #fff, 300px 1200px #fff, 1400px 900px #fff, 200px 100px #fff, 750px 400px #fff,
+    1100px 600px #fff, 1700px 1100px #fff, 600px 1400px #fff, 850px 1800px #fff;
+}
+
+.stars-2 {
+  box-shadow: 250px 500px rgba(239, 35, 60, 0.8), 700px 100px rgba(239, 35, 60, 0.6),
+    1100px 900px rgba(239, 35, 60, 0.8), 1500px 1300px rgba(239, 35, 60, 0.5),
+    350px 800px rgba(239, 35, 60, 0.7), 900px 1200px rgba(239, 35, 60, 0.6);
+}
+
+/* Carbon Grid Backdrop */
+.carbon-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.carbon-grid-dense {
+  background-image: linear-gradient(rgba(239, 35, 60, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 35, 60, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Custom Scrollbar for sleek telemetry tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ef233c;
+}
